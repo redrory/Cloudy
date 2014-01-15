@@ -1,0 +1,6 @@
+Cloudy App
+
+Rails 3.2.13
+Open Weather API
+
+Helping the Boss Man to make more money
