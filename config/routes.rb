@@ -1,11 +1,13 @@
 Cloudy::Application.routes.draw do
 
-  get "users/index"
+  resources :users
+  #get "users/index"
 
-  get "users/new"
+  #get "users/new"
 
-  get "users/welcome"
+  #get "users/welcome"
 
-   root :to => 'users#welcome'
+  root :to => 'users#welcome'
+
 
 end
