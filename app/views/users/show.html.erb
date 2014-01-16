@@ -1,1 +1,15 @@
 <%= @user.name%>
+
+
+
+<%#= @link = "http://api.openweathermap.org/data/2.5/forecast/daily?q=#{@user.city}&cnt=2&mode=json" %>
+
+
+<%= @link = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Kingston&cnt=1&mode=json" %>
+
+
+<% @data = JSON.parse(JSON.load(open(@link)).to_json) %>
+
+<%= @data %>
+
+<h1>  <%= @data['list'].first['weather'].first['main'] %> </h1>
