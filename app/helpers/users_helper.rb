@@ -76,4 +76,42 @@ def send_it_email(weather, it_staff, city)
 
 end
 
+  def amount_staff_lost(weather,city)
+    @city = city
+    @weekly = 0
+    @total = 40
+    @type = "Office"
+
+    weather.each do |w|
+      if w == "Rain"
+        @weekly += 4
+      elsif w == "Sunny"
+        @weekly += 8
+      else
+        @weekly += 8
+      end
+    end
+
+  end
+
+  def amount_it_lost(weather,city )
+
+    @weekly = 0
+    @total = 40
+    @type = "IT"
+
+    weather.each do |w|
+      if w == "Rain"
+        @weekly += 0
+      elsif w == "Sunny"
+        @weekly += 8
+      else
+        @weekly += 8
+      end
+    end
+
+  end
+
+
+
 end

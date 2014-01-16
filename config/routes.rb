@@ -8,6 +8,7 @@ Cloudy::Application.routes.draw do
   #get "users/welcome"
 
   match "weather" => "users#weather"
+  match "hours" => "users#welcome"
 
   root :to => 'users#welcome'
 

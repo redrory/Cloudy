@@ -1,4 +1,70 @@
-<h1>Sweet</h1>
-<p>GO Time1</p>
+<h1>Productively Sheet</h1>
 
-<%= @day1.inspect %>
+
+<table class="table table-striped">
+  <tr>
+    <td>City</td>
+    <td>Staff Type</td>
+    <td>Hours lost</td>
+    <td>Weather</td>
+  </tr>
+
+  <tr>
+    <td><%= @city %></td>
+    <td><%= @type %></td>
+    <td><%= @kgn_off_waste = @total - @weekly %></td>
+    <td><%= @kgn_weather %></td>
+  </tr>
+
+  <% amount_staff_lost(@mobay_weather, "Montego Bay") %>
+
+  <tr>
+    <td><%= @city %></td>
+    <td><%= @type %></td>
+    <td><%= @mby_off_waste = @total - @weekly %></td>
+    <td><%= @mobay_weather %></td>
+  </tr>
+
+  <% amount_it_lost(@kgn_weather, "Kingston") %>
+
+  <tr>
+    <td><%= @city %></td>
+    <td><%= @type %></td>
+    <td><%= @kgn_it_waste = @total - @weekly %></td>
+    <td><%= @kgn_weather %></td>
+  </tr>
+
+  <% amount_it_lost(@mobay_weather, "Montego Bay") %>
+
+  <tr>
+    <td><%= @city %></td>
+    <td><%= @type %></td>
+    <td><%= @mobay_it_waste = @total - @weekly %></td>
+    <td><%= @mobay_weather %></td>
+  </tr>
+
+</table>
+
+<table class="table">
+  <tr>
+    <td>City </td>
+    <td>Hours lost </td>
+  </tr>
+
+  <tr>
+    <td> Mobay Wasted Hours </td>
+    <td><%= @mobay_lost =  @mobay_it_waste + @mby_off_waste %></td>
+  </tr>
+
+  <tr>
+    <td> Kingston Wasted Hours </td>
+    <td><%= @kgn_lost = @kgn_it_waste + @kgn_off_waste %></td>
+  </tr>
+
+  <tr>
+    <td> Total Hours lost </td>
+    <td><%= @kgn_lost + @mobay_lost %></td>
+  </tr>
+
+
+</table>

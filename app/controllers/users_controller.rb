@@ -27,6 +27,11 @@ class UsersController < ApplicationController
   end
 
   def welcome
+    get_weather("kingston")
+    get_mobay_weather
+    amount_staff_lost(@kgn_weather, "Kingston")
+    #amount_it_lost(@kgn_weather)
+
   end
 
   def weather
