@@ -32,8 +32,12 @@ class UsersController < ApplicationController
   def weather
     get_weather("Kingston")
     @kgn_employees = User.find_all_by_city("Kingston")
+    @kgn_employees = User.find_all_by_city("Kingston")
+    @user = @kgn_employees.first
     check_rain(@weather)
-    send_email(@which_day)
+    #send_email(@which_day)
+
+    UserMailer.weather(@user).deliver
     @mobay_employees = User.find_all_by_city("Montego Bay")
   end
 
