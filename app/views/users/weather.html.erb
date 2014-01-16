@@ -1,9 +1,9 @@
 <h1>Sweet</h1>
 <p>GO Time1</p>
 
-<%= @weather %>
+Weather <%= @weather %>
 
-<%= @which_day %>
+Which day = <%= @which_day %>
 
 <h1><%= @user.email %></h1>
 
@@ -14,4 +14,39 @@
 <% @mobay_employees.each do |emp| %>
   <%= emp.name %>
 <% end %>
+
+
+<h3> Schedule </h3>
+
+<% send_email(@weather) %>
+
+
+<table class="table">
+  <tr>
+    <td>Day 1 </td>
+    <td><%= @weekly[0]%></td>
+  </tr>
+
+  <tr>
+    <td>Day 2 </td>
+    <td><%= @weekly[1] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 3 </td>
+    <td><%= @weekly[2] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 4 </td>
+    <td><%= @weekly[3] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 5 </td>
+    <td><%= @weekly[4] %></td>
+  </tr>
+
+
+</table>
 

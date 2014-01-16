@@ -18,13 +18,23 @@ end
 
 def check_rain(weather)
   if weather.include?("Rain")
-    #@which_day = weather.index("Rain")
-    @which_day = weather.each_index.select{|i| weather[i] == "Rain"}
+    #@which_day = weather.each_index.select{|i| weather[i] == "Rain"}
   end
 end
 
-def send_email(which_day)
-  #which_day.each do |day|
+def send_email(weather)
+
+  @weekly = []
+
+  weather.each do |w|
+    if w == "Rain"
+      @weekly << "4 hours"
+    elsif w == "Sunny"
+      @weekly << "8 hours"
+    else
+      @weekly << "8 hours"
+    end
+  end
 
 end
 

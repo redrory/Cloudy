@@ -6,8 +6,9 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.weather.subject
   #
-  def weather(user)
+  def weather(user, weekly)
     @user = user
+    @weekly = weekly
 
     mail to: user.email, subject: "Your work days"
   end
