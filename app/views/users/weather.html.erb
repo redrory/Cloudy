@@ -1,24 +1,34 @@
 <h1>Sweet</h1>
 <p>GO Time1</p>
 
-Weather <%= @weather %>
+<p>
+  KGN Weather <%= @kgn_weather %>
+</p>
+
+<p>
+  MBY Weather <%= @mobay_weather %>
+</p>
+
 
 Which day = <%= @which_day %>
 
 <h1><%= @user.email %></h1>
 
-<% @kgn_employees.each do |emp| %>
+Kgn IT
+<% @kgn_IT.each do |emp| %>
   <%= emp.name %>
 <% end %>
 
-<% @mobay_employees.each do |emp| %>
+Mobay IT
+
+<% @mobay_IT.each do |emp| %>
   <%= emp.name %>
 <% end %>
 
 
 <h3> Office Schedule </h3>
 
-<% send_office_email(@weather) %>
+<% send_office_email(@kgn_weather) %>
 
 
 <table class="table">
@@ -52,7 +62,7 @@ Which day = <%= @which_day %>
 
 <h3> IT Schedule </h3>
 
-<% send_it_email(@weather) %>
+<% send_it_email(@kgn_weather) %>
 
 
 <table class="table">
