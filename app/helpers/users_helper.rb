@@ -22,7 +22,7 @@ def check_rain(weather)
   end
 end
 
-def send_email(weather)
+def send_office_email(weather)
 
   @weekly = []
 
