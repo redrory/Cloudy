@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @cities = City.all
+    @roles = Role.all
   end
 
   def create
