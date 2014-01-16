@@ -1,10 +1,15 @@
 <h1>Productively Sheet</h1>
 
+<p>
+  <%= link_to "Send Manual Email", "weather" %> <br>
+  <%= link_to "Add Employee", "users/new" %>
+</p>
 
 <table class="table table-striped">
   <tr>
     <td>City</td>
     <td>Staff Type</td>
+    <td>Staff Count</td>
     <td>Hours lost</td>
     <td>Weather</td>
   </tr>
@@ -12,6 +17,7 @@
   <tr>
     <td><%= @city %></td>
     <td><%= @type %></td>
+    <td><%= @kgn_office_count %></td>
     <td><%= @kgn_off_waste = @total - @weekly %></td>
     <td><%= @kgn_weather %></td>
   </tr>
@@ -21,6 +27,7 @@
   <tr>
     <td><%= @city %></td>
     <td><%= @type %></td>
+    <td><%= @mobay_office_count %></td>
     <td><%= @mby_off_waste = @total - @weekly %></td>
     <td><%= @mobay_weather %></td>
   </tr>
@@ -30,6 +37,7 @@
   <tr>
     <td><%= @city %></td>
     <td><%= @type %></td>
+    <td><%= @kgn_IT_count %></td>
     <td><%= @kgn_it_waste = @total - @weekly %></td>
     <td><%= @kgn_weather %></td>
   </tr>
@@ -39,6 +47,7 @@
   <tr>
     <td><%= @city %></td>
     <td><%= @type %></td>
+    <td><%= @mobay_IT_count %></td>
     <td><%= @mobay_it_waste = @total - @weekly %></td>
     <td><%= @mobay_weather %></td>
   </tr>
@@ -49,16 +58,17 @@
   <tr>
     <td>City </td>
     <td>Hours lost </td>
+
   </tr>
 
   <tr>
     <td> Montego Bay Wasted Hours </td>
-    <td><%= @mobay_lost =  @mobay_it_waste + @mby_off_waste %></td>
+    <td><%= @mobay_lost =  (@mobay_it_waste * @mobay_IT_count)+ (@mby_off_waste*@mobay_office_count) %></td>
   </tr>
 
   <tr>
     <td> Kingston Wasted Hours </td>
-    <td><%= @kgn_lost = @kgn_it_waste + @kgn_off_waste %></td>
+    <td><%= @kgn_lost = (@kgn_it_waste * @kgn_IT_count) + (@kgn_off_waste * @kgn_office_count) %></td>
   </tr>
 
   <tr>

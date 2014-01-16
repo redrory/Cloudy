@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def welcome
+    count_staff
     get_weather("kingston")
     get_mobay_weather
     amount_staff_lost(@kgn_weather, "Kingston")
@@ -37,6 +38,7 @@ class UsersController < ApplicationController
   def weather
 
     #get weather forecast
+    count_staff
     get_weather("kingston")
     get_mobay_weather
 
@@ -47,12 +49,12 @@ class UsersController < ApplicationController
     @mobay_office = User.where("city = ? AND role = ?", "Montego Bay", "Office")
 
     #Kgn Push
-    #send_office_email(@kgn_weather, @kgn_office, "Kingston")
-    #send_it_email(@kgn_weather, @kgn_IT, "kgn" )
+    send_office_email(@kgn_weather, @kgn_office, "Kingston")
+    send_it_email(@kgn_weather, @kgn_IT, "kgn" )
 
     #Mobay Push
-    #send_office_email(@mobay_weather, @mobay_office, "Montego Bay")
-    #send_it_email(@mobay_weather, @mobay_IT, "Mobay" )
+    send_office_email(@mobay_weather, @mobay_office, "Montego Bay")
+    send_it_email(@mobay_weather, @mobay_IT, "Mobay" )
 
   end
 

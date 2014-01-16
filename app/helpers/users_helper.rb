@@ -112,6 +112,18 @@ end
 
   end
 
+  def count_staff
+
+    @kgn_IT_count = User.where("city = ? AND role = ?", "Kingston", "IT").size
+    @mobay_IT_count = User.where("city = ? AND role = ?", "Montego Bay", "IT").size
+    @kgn_office_count = User.where("city = ? AND role = ?", "Kingston", "Office").size
+    @mobay_office_count = User.where("city = ? AND role = ?", "Montego Bay", "Office").size
+
+    @kgn_count = @kgn_IT_count + @kgn_office_count
+    @mobay_count = @mobay_office_count  + @mobay_IT_count
+
+  end
+
 
 
 end
