@@ -27,6 +27,10 @@ class UsersController < ApplicationController
   def welcome
   end
 
+  def weather
+  end
+
+
   def show
     @user = User.find(params[:id])
 
