@@ -30,25 +30,24 @@ class UsersController < ApplicationController
   end
 
   def weather
-    get_weather("kingston")
 
+    #get weather forecast
+    get_weather("kingston")
     get_mobay_weather
 
-    #@kgn_employees = User.find_all_by_city("Kingston")
-    #@mobay_employees = User.find_all_by_city("Montego Bay")
-
+    #get respectively users
     @kgn_IT = User.where("city = ? AND role = ?", "Kingston", "IT")
     @mobay_IT = User.where("city = ? AND role = ?", "Montego Bay", "IT")
     @kgn_office = User.where("city = ? AND role = ?", "Kingston", "Office")
     @mobay_office = User.where("city = ? AND role = ?", "Montego Bay", "Office")
 
-    @user = @kgn_IT.first
+    #Kgn Push
+    #send_office_email(@kgn_weather, @kgn_office, "Kingston")
+    #send_it_email(@kgn_weather, @kgn_IT, "kgn" )
 
-    check_rain(@kgn_weather)
-    send_office_email(@kgn_weather)
-    send_it_email(@kgn_weather)
-
-    #UserMailer.weather(@user, @weekly).deliver
+    #Mobay Push
+    #send_office_email(@mobay_weather, @mobay_office, "Montego Bay")
+    #send_it_email(@mobay_weather, @mobay_IT, "Mobay" )
 
   end
 

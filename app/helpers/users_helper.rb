@@ -38,7 +38,7 @@ def check_rain(weather)
   end
 end
 
-def send_office_email(weather)
+def send_office_email(weather,office_staff,city)
 
   @weekly = []
 
@@ -52,13 +52,13 @@ def send_office_email(weather)
     end
   end
 
-  @kgn_office.each do |kgn|
-    #UserMailer.weather(kgn, @weekly).deliver
+  office_staff.each do |emp|
+    UserMailer.weather(emp, @weekly, city).deliver
   end
 
 end
 
-def send_it_email(weather)
+def send_it_email(weather, it_staff, city)
 
   @weekly = []
 
@@ -70,8 +70,8 @@ def send_it_email(weather)
     end
   end
 
-  @mobay_IT.each do |mby|
-    #UserMailer.it_email(mby, @weekly).deliver
+  it_staff.each do |it_emp|
+    UserMailer.it_email(it_emp, @weekly, city).deliver
   end
 
 end
