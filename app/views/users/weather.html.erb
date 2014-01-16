@@ -1,6 +1,15 @@
 <h1>Sweet</h1>
 <p>GO Time1</p>
 
-<% get_weather("kgn") %>
-
 <%= @weather %>
+
+<%= @which_day %>
+
+<% @kgn_employees.each do |emp| %>
+  <%= emp.name %>
+<% end %>
+
+<% @mobay_employees.each do |emp| %>
+  <%= emp.name %>
+<% end %>
+
