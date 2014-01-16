@@ -10,6 +10,13 @@ class UserMailer < ActionMailer::Base
     @user = user
     @weekly = weekly
 
-    mail to: user.email, subject: "Your work days"
+    mail to: user.email, subject: "Office Staff work days"
+  end
+
+  def it_email(user,weekly)
+    @user = user
+    @weekly = weekly
+
+    mail to: user.email, subject: "IT Staff Work days"
   end
 end

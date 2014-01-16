@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     check_rain(@weather)
     send_office_email(@weather)
 
-    UserMailer.weather(@user, @weekly).deliver
+    #UserMailer.weather(@user, @weekly).deliver
     @mobay_employees = User.find_all_by_city("Montego Bay")
   end
 

@@ -1,0 +1,33 @@
+
+Hey <%= @user.name %>, You're the best employee ever,
+
+There's your schedule for the next 5 days
+
+<table class="table">
+  <tr>
+    <td>Day 1 </td>
+    <td><%= @weekly[0]%></td>
+  </tr>
+
+  <tr>
+    <td>Day 2 </td>
+    <td><%= @weekly[1] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 3 </td>
+    <td><%= @weekly[2] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 4 </td>
+    <td><%= @weekly[3] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 5 </td>
+    <td><%= @weekly[4] %></td>
+  </tr>
+
+
+</table>

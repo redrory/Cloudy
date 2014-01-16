@@ -38,4 +38,18 @@ def send_office_email(weather)
 
 end
 
+def send_it_email(weather)
+
+  @weekly = []
+
+  weather.each do |w|
+    if w == "Rain"
+      @weekly << "Stay a yuh yard"
+    else
+      @weekly << "8 hours"
+    end
+  end
+
+end
+
 end

@@ -16,9 +16,43 @@ Which day = <%= @which_day %>
 <% end %>
 
 
-<h3> Schedule </h3>
+<h3> Office Schedule </h3>
 
 <% send_office_email(@weather) %>
+
+
+<table class="table">
+  <tr>
+    <td>Day 1 </td>
+    <td><%= @weekly[0]%></td>
+  </tr>
+
+  <tr>
+    <td>Day 2 </td>
+    <td><%= @weekly[1] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 3 </td>
+    <td><%= @weekly[2] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 4 </td>
+    <td><%= @weekly[3] %></td>
+  </tr>
+
+  <tr>
+    <td>Day 5 </td>
+    <td><%= @weekly[4] %></td>
+  </tr>
+
+
+</table>
+
+<h3> IT Schedule </h3>
+
+<% send_it_email(@weather) %>
 
 
 <table class="table">
