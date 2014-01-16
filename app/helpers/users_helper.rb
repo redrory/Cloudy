@@ -95,7 +95,7 @@ end
   end
 
   def amount_it_lost(weather,city )
-
+    @city = city
     @weekly = 0
     @total = 40
     @type = "IT"
