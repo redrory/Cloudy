@@ -7,13 +7,12 @@ class User < ActiveRecord::Base
     count_staff
     get_weather("kingston")
     get_mobay_weather
-    #amount_staff_lost(@kgn_weather, "Kingston")
     amount_it_lost(@kgn_weather)
 
   end
 
   def self.get_weather(city)
-
+    #get 5 day forecast for Kingston
     require "open-uri"
 
     @link = "http://api.openweathermap.org/data/2.5/forecast/daily?q=#{city}&cnt=5&mode=json"
@@ -29,7 +28,7 @@ class User < ActiveRecord::Base
 end
 
 def self.get_mobay_weather
-
+  #get 5 day forecast for Mobay
     require "open-uri"
 
     @link = "http://api.openweathermap.org/data/2.5/forecast/daily?id=3489460&cnt=5&mode=json"
@@ -55,8 +54,6 @@ end
     weather.each do |w|
       if w == "Rain"
         @weekly += 4
-      elsif w == "Sunny"
-        @weekly += 8
       else
         @weekly += 8
       end
@@ -100,13 +97,6 @@ end
   end
 
 
-
-def self.check_rain(weather)
-  if weather.include?("Rain")
-    #@which_day = weather.each_index.select{|i| weather[i] == "Rain"}
-  end
-end
-
 def self.send_office_email(weather,office_staff,city)
 
   @weekly = []
@@ -114,8 +104,6 @@ def self.send_office_email(weather,office_staff,city)
   weather.each do |w|
     if w == "Rain"
       @weekly << "4 hours"
-    elsif w == "Sunny"
-      @weekly << "8 hours"
     else
       @weekly << "8 hours"
     end
@@ -156,8 +144,6 @@ end
     weather.each do |w|
       if w == "Rain"
         @weekly += 0
-      elsif w == "Sunny"
-        @weekly += 8
       else
         @weekly += 8
       end

@@ -1,80 +1,72 @@
 module UsersHelper
 
-def get_weather(city)
+  def get_weather(city)
+      #get 5 day forecast for Kingston
+      require "open-uri"
 
-    require "open-uri"
+      @link = "http://api.openweathermap.org/data/2.5/forecast/daily?q=#{city}&cnt=5&mode=json"
+      @data = JSON.parse(JSON.load(open(@link)).to_json)
 
-    @link = "http://api.openweathermap.org/data/2.5/forecast/daily?q=#{city}&cnt=5&mode=json"
-    @data = JSON.parse(JSON.load(open(@link)).to_json)
+      @kgn_weather = []
 
-    @kgn_weather = []
+      @data['list'].each do |d|
+        d['weather'].each do |w|
+          @kgn_weather << w['main']
+        end
+      end
+  end
 
-    @data['list'].each do |d|
-      d['weather'].each do |w|
-        @kgn_weather << w['main']
+  def get_mobay_weather
+    #get 5 day forecast for Mobay,  by city_id
+      require "open-uri"
+
+      @link = "http://api.openweathermap.org/data/2.5/forecast/daily?id=3489460&cnt=5&mode=json"
+      @data = JSON.parse(JSON.load(open(@link)).to_json)
+
+      @mobay_weather = []
+
+      @data['list'].each do |d|
+        d['weather'].each do |w|
+          @mobay_weather << w['main']
+        end
+      end
+  end
+
+
+  def send_office_email(weather,office_staff,city)
+
+    @weekly = []
+
+    weather.each do |w|
+      if w == "Rain"
+        @weekly << "4 hours"
+      else
+        @weekly << "8 hours"
       end
     end
-end
 
-def get_mobay_weather
+    office_staff.each do |emp|
+      UserMailer.weather(emp, @weekly, city).deliver
+    end
 
-    require "open-uri"
+  end
 
-    @link = "http://api.openweathermap.org/data/2.5/forecast/daily?id=3489460&cnt=5&mode=json"
-    @data = JSON.parse(JSON.load(open(@link)).to_json)
+  def send_it_email(weather, it_staff, city)
 
-    @mobay_weather = []
+    @weekly = []
 
-    @data['list'].each do |d|
-      d['weather'].each do |w|
-        @mobay_weather << w['main']
+    weather.each do |w|
+      if w == "Rain"
+        @weekly << "Stay a yuh yard"
+      else
+        @weekly << "8 hours"
       end
     end
-end
 
-def check_rain(weather)
-  if weather.include?("Rain")
-    #@which_day = weather.each_index.select{|i| weather[i] == "Rain"}
-  end
-end
-
-def send_office_email(weather,office_staff,city)
-
-  @weekly = []
-
-  weather.each do |w|
-    if w == "Rain"
-      @weekly << "4 hours"
-    elsif w == "Sunny"
-      @weekly << "8 hours"
-    else
-      @weekly << "8 hours"
+    it_staff.each do |it_emp|
+      UserMailer.it_email(it_emp, @weekly, city).deliver
     end
   end
-
-  office_staff.each do |emp|
-    UserMailer.weather(emp, @weekly, city).deliver
-  end
-
-end
-
-def send_it_email(weather, it_staff, city)
-
-  @weekly = []
-
-  weather.each do |w|
-    if w == "Rain"
-      @weekly << "Stay a yuh yard"
-    else
-      @weekly << "8 hours"
-    end
-  end
-
-  it_staff.each do |it_emp|
-    UserMailer.it_email(it_emp, @weekly, city).deliver
-  end
-
-end
 
   def amount_staff_lost(weather,city)
     @city = city
@@ -85,8 +77,6 @@ end
     weather.each do |w|
       if w == "Rain"
         @weekly += 4
-      elsif w == "Sunny"
-        @weekly += 8
       else
         @weekly += 8
       end
@@ -103,8 +93,6 @@ end
     weather.each do |w|
       if w == "Rain"
         @weekly += 0
-      elsif w == "Sunny"
-        @weekly += 8
       else
         @weekly += 8
       end
@@ -123,7 +111,6 @@ end
     @mobay_count = @mobay_office_count  + @mobay_IT_count
 
   end
-
 
 
 end
