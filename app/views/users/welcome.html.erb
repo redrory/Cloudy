@@ -13,7 +13,8 @@
     <td>Hours lost</td>
     <td>Weather</td>
   </tr>
-
+  <% get_weather("kingston") %>
+  <% amount_staff_lost(@kgn_weather, "Kingston") %>
   <tr>
     <td><%= @city %></td>
     <td><%= @type %></td>
@@ -21,7 +22,7 @@
     <td><%= @kgn_off_waste = @total - @weekly %></td>
     <td><%= @kgn_weather %></td>
   </tr>
-
+  <% get_mobay_weather %>
   <% amount_staff_lost(@mobay_weather, "Montego Bay") %>
 
   <tr>

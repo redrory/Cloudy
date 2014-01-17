@@ -30,14 +30,17 @@ class UsersController < ApplicationController
 
   def welcome
     count_staff
+=begin
+    count_staff
     get_weather("kingston")
     get_mobay_weather
     amount_staff_lost(@kgn_weather, "Kingston")
     #amount_it_lost(@kgn_weather)
-
+=end
   end
 
   def weather
+
 
     #get weather forecast
     count_staff

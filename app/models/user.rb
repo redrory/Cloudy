@@ -2,7 +2,17 @@ class User < ActiveRecord::Base
   attr_accessible :address1, :city, :country, :email, :name, :role, :telephoneNo
   include UsersHelper
 
-  def self.weather
+
+  def welcome
+    count_staff
+    get_weather("kingston")
+    get_mobay_weather
+    #amount_staff_lost(@kgn_weather, "Kingston")
+    amount_it_lost(@kgn_weather)
+
+  end
+
+  def weather
 
     #get weather forecast
     count_staff
