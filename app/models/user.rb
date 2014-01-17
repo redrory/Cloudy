@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   end
 
-  def weather
+  def self.weather
 
     #get weather forecast
     count_staff
