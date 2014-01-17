@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
 
   end
 
-  def get_weather(city)
+  def self.get_weather(city)
 
     require "open-uri"
 
@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
     end
 end
 
-def get_mobay_weather
+def self.get_mobay_weather
 
     require "open-uri"
 
@@ -79,13 +79,13 @@ def get_mobay_weather
     end
 end
 
-def check_rain(weather)
+def self.check_rain(weather)
   if weather.include?("Rain")
     #@which_day = weather.each_index.select{|i| weather[i] == "Rain"}
   end
 end
 
-def send_office_email(weather,office_staff,city)
+def self.send_office_email(weather,office_staff,city)
 
   @weekly = []
 
