@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   end
 
-  def count_staff
+  def self.count_staff
 
     @kgn_IT_count = User.where("city = ? AND role = ?", "Kingston", "IT").size
     @mobay_IT_count = User.where("city = ? AND role = ?", "Montego Bay", "IT").size
