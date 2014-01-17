@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def welcome
-    count_staff
+    User.count_staff
 =begin
     count_staff
     get_weather("kingston")
@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     count_staff
     get_weather("kingston")
     get_mobay_weather
+
 
     #get respectively users
     @kgn_IT = User.where("city = ? AND role = ?", "Kingston", "IT")

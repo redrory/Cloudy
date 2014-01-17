@@ -12,6 +12,58 @@ class User < ActiveRecord::Base
 
   end
 
+  def self.get_weather(city)
+
+    require "open-uri"
+
+    @link = "http://api.openweathermap.org/data/2.5/forecast/daily?q=#{city}&cnt=5&mode=json"
+    @data = JSON.parse(JSON.load(open(@link)).to_json)
+
+    @kgn_weather = []
+
+    @data['list'].each do |d|
+      d['weather'].each do |w|
+        @kgn_weather << w['main']
+      end
+    end
+end
+
+def self.get_mobay_weather
+
+    require "open-uri"
+
+    @link = "http://api.openweathermap.org/data/2.5/forecast/daily?id=3489460&cnt=5&mode=json"
+    @data = JSON.parse(JSON.load(open(@link)).to_json)
+
+    @mobay_weather = []
+
+    @data['list'].each do |d|
+      d['weather'].each do |w|
+        @mobay_weather << w['main']
+      end
+    end
+end
+
+ def self.amount_staff_lost(weather,city)
+    @city = city
+    @weekly = 0
+    @total = 40
+    @type = "Office"
+
+    @mns = city
+
+    weather.each do |w|
+      if w == "Rain"
+        @weekly += 4
+      elsif w == "Sunny"
+        @weekly += 8
+      else
+        @weekly += 8
+      end
+    end
+
+  end
+
   def self.count_staff
 
     @kgn_IT_count = User.where("city = ? AND role = ?", "Kingston", "IT").size
@@ -47,37 +99,7 @@ class User < ActiveRecord::Base
 
   end
 
-  def self.get_weather(city)
 
-    require "open-uri"
-
-    @link = "http://api.openweathermap.org/data/2.5/forecast/daily?q=#{city}&cnt=5&mode=json"
-    @data = JSON.parse(JSON.load(open(@link)).to_json)
-
-    @kgn_weather = []
-
-    @data['list'].each do |d|
-      d['weather'].each do |w|
-        @kgn_weather << w['main']
-      end
-    end
-end
-
-def self.get_mobay_weather
-
-    require "open-uri"
-
-    @link = "http://api.openweathermap.org/data/2.5/forecast/daily?id=3489460&cnt=5&mode=json"
-    @data = JSON.parse(JSON.load(open(@link)).to_json)
-
-    @mobay_weather = []
-
-    @data['list'].each do |d|
-      d['weather'].each do |w|
-        @mobay_weather << w['main']
-      end
-    end
-end
 
 def self.check_rain(weather)
   if weather.include?("Rain")
@@ -123,23 +145,7 @@ def self.send_it_email(weather, it_staff, city)
 
 end
 
-  def self.amount_staff_lost(weather,city)
-    @city = city
-    @weekly = 0
-    @total = 40
-    @type = "Office"
 
-    weather.each do |w|
-      if w == "Rain"
-        @weekly += 4
-      elsif w == "Sunny"
-        @weekly += 8
-      else
-        @weekly += 8
-      end
-    end
-
-  end
 
   def self.amount_it_lost(weather,city )
     @city = city

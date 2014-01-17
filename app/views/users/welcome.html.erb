@@ -13,7 +13,9 @@
     <td>Hours lost</td>
     <td>Weather</td>
   </tr>
+  <% count_staff %>
   <% get_weather("kingston") %>
+
   <% amount_staff_lost(@kgn_weather, "Kingston") %>
   <tr>
     <td><%= @city %></td>
